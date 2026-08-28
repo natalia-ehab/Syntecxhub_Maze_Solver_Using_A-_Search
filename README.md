@@ -35,13 +35,13 @@ The program will find the shortest path and display the result in the console an
 
 ## Project Structure
 astar-maze-solver/
-   main.py
-   README.md
-   requirements.txt
-   .gitignore/
+- main.py
+- README.md
+- requirements.txt
+- .gitignore/
 
 ## Technologies
-Python 
-A* Search Algorithm
-Euclidean Distance
-Matplotlib
+- Python 
+- A* Search Algorithm
+- Euclidean Distance
+- Matplotlib
