@@ -33,7 +33,7 @@ Run the following command from the project folder: python main.py
 The program will find the shortest path and display the result in the console and graphically.
 
 ## Maze Symbols
-# Symbol        Meaning
+Symbol        Meaning
   S             Start
   G             Goal
   #             Wall
