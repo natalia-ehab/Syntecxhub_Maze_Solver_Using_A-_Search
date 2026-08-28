@@ -1,7 +1,7 @@
 #Import required libraries
 import math
 import heapq
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 
 #Maze 2D Grid : "S" = Start, "G" = Goal, "." = Walkable cell, "#" = Wall
 maze = [
@@ -138,16 +138,16 @@ def display_path(maze, path):
                 
 #Graphical Visualization using Matplotlib
 #A function to graphically visualize the maze & the shortest path
-def visualize_maze(maze, path):
+def visualize_maze(maze, path, start, goal):
     #Get the number of rows & columns
     rows = len(maze)
-    columns = lens(maze[0])
+    columns = len(maze[0])  # Fixed syntax error: 'lens' -> 'len'
 
     #Create a figure
-    fig, ax = plt.subplots(figsize=(8,6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
     #Draw the grid
-    ax.set_xlim(0,columns)
+    ax.set_xlim(0, columns)
     ax.set_ylim(0, rows)
     ax.set_xticks(range(columns + 1))
     ax.set_yticks(range(rows + 1))
@@ -156,57 +156,57 @@ def visualize_maze(maze, path):
     #Draw each cell
     for row in range(rows):
         for column in range(columns):
-            #Set the cell color based on its type
-            if maze[row][column] == '#':
-                cell_color = 'black'
+            # Set the cell color based on its type
+            if maze[row][column] == "#":
+                cell_color = "black"
             elif (row, column) in path:
-                cell_color = 'red'
+                cell_color = "red"
             else:
-                cell_color = 'white'    
+                cell_color = "white"
 
             #Draw the cell
             ax.add_patch(
                 plt.Rectangle(
-                    (column,rows - row - 1),
+                    (column, rows - row - 1),
                     1,
                     1,
                     facecolor=cell_color,
-                    edgecolor='black'
+                    edgecolor="black",
                 )
             )
 
-#Mark the start and goal
-start_row, start_column = start
-goal_row, goal_column = goal
+    #Mark the start and goal 
+    start_row, start_column = start
+    goal_row, goal_column = goal
 
-ax.text
-(
-    start_column + 0.5,
-    rows - start_row - 0.5,
-    'S',
-    ha='center',
-    va='center',
-    fontsize=16
-)
+    ax.text(
+        start_column + 0.5,
+        rows - start_row - 0.5,
+        "S",
+        ha="center",
+        va="center",
+        fontsize=16,
+        color="white" if maze[start_row][start_column] == "#" else "black",
+    )
 
-ax.text
-(
-    goal_column + 0.5,
-    rows - goal_row - 0.5,
-    'G',
-    ha='center',
-    va='center',
-    fontsize=16
-)
+    ax.text(
+        goal_column + 0.5,
+        rows - goal_row - 0.5,
+        "G",
+        ha="center",
+        va="center",
+        fontsize=16,
+        color="white" if maze[goal_row][goal_column] == "#" else "black",
+    )
 
-#Title
-ax.set_title("Project 1 : A* Maze Solver")
+    #Title
+    ax.set_title("Project 1 : A* Maze Solver")
 
-#Remove axis labels
-ax.set_xticklabels([])
-ax.set_yticklabels([])
+    #Remove axis labels
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
 
-plt.show()
+    plt.show()
 
 
 #Test
@@ -216,6 +216,6 @@ if path:
     print("Maze with shortest path: ")
     display_path(maze,path)
 
-    visualize_maze(maze, path)
+    visualize_maze(maze, path, start, goal)
 else: 
     print("No path exists between start and goal")
